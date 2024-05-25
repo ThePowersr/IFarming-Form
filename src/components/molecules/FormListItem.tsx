@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import ButtonCustom from '../atoms/ButtonCustom';
-import { ListItem } from '@rneui/themed';
 import { Swipeable } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 

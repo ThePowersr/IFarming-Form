@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, TextInput, Button, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
+import { View, TextInput, Button, StyleSheet, ScrollView, useWindowDimensions, KeyboardTypeOptions } from 'react-native';
 import ButtonCustom from '../atoms/ButtonCustom';
+import { SelectList } from 'react-native-dropdown-select-list';
 
 interface FieldProps {
   id: string;
@@ -17,8 +18,23 @@ interface FormFieldProps {
   onRemove: () => void;
 }
 
+const keyboardTypeOptions: { key: string, value: KeyboardTypeOptions }[] = [
+  { key: '1', value: 'default' },
+  { key: '2', value: 'number-pad' },
+  { key: '3', value: 'decimal-pad' },
+  { key: '4', value: 'numeric' },
+  { key: '5', value: 'email-address' },
+  { key: '6', value: 'phone-pad' },
+  { key: '7', value: 'url' },
+  { key: '8', value: 'ascii-capable' },
+  { key: '9', value: 'numbers-and-punctuation' },
+  { key: '10', value: 'name-phone-pad' },
+  { key: '11', value: 'twitter' },
+  { key: '12', value: 'web-search' },
+  { key: '13', value: 'visible-password' },
+];
+
 const FormField: React.FC<FormFieldProps> = ({ field, onLabelChange, onPlaceholderChange, onTypeChange, onRemove }) => {
-  const { height: windowHeight, width: windowWidth } = useWindowDimensions();
   return (
     <View style={{ flex: 1 }}>
       <ScrollView style={styles.fieldContainer} contentContainerStyle={{ flexGrow: 1 }}>
@@ -34,11 +50,11 @@ const FormField: React.FC<FormFieldProps> = ({ field, onLabelChange, onPlacehold
           value={field.placeholder}
           onChangeText={onPlaceholderChange}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Field Type"
-          value={field.type}
-          onChangeText={onTypeChange}
+        <SelectList
+          data={keyboardTypeOptions}
+          save='value'
+          setSelected={onTypeChange}
+          placeholder='Tipo de Input'
         />
         <ButtonCustom text="Eliminar" action={onRemove} containerStyle={{ backgroundColor: 'red' }} />
       </ScrollView>
@@ -48,7 +64,6 @@ const FormField: React.FC<FormFieldProps> = ({ field, onLabelChange, onPlacehold
 
 const styles = StyleSheet.create({
   fieldContainer: {
-    marginBottom: 15,
     flex: 1
   },
   input: {
@@ -57,6 +72,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
+    borderRadius: 20
   },
 });
 
