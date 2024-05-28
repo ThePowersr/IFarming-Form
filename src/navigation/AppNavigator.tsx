@@ -5,13 +5,15 @@ import HomeScreen from '../screens/HomeScreen';
 import EditFormScreen from '../screens/EditFormScreen';
 import FormScreen from '../screens/FormScreen';
 import { Platform, Text, View } from 'react-native';
-//import NotFoundScreen from '../screens/NotFoundScreen';
+import AnimatedSplashScreen from '../screens/SplashSCreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 
 export type RootStackParamList = {
   Home: undefined;
   EditForm: { formId?: string };
   Form: { formId?: string };
   NotFound: undefined;
+  SplashScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -29,20 +31,15 @@ const linking = {
   },
 };
 
-const NotFoundComponent = () => (
-  <View>
-    <Text>Not Found</Text>
-  </View>
-);
-
 const AppNavigator = () => {
   return (
     <NavigationContainer linking={linking}>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: Platform.OS === 'web' ? '#e4dddd' : 'white' } }}>
+      <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: Platform.OS === 'web' ? '#e4dddd' : 'white' } }}>
+        <Stack.Screen name='SplashScreen' component={AnimatedSplashScreen}></Stack.Screen>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="EditForm" component={EditFormScreen} />
         <Stack.Screen name="Form" component={FormScreen} />
-        <Stack.Screen name="NotFound" component={NotFoundComponent} />
+        <Stack.Screen name="NotFound" component={NotFoundScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

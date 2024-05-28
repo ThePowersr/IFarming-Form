@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Button, StyleSheet, ScrollView, useWindowDimensions, KeyboardTypeOptions } from 'react-native';
+import { View, TextInput, StyleSheet, KeyboardTypeOptions } from 'react-native';
 import ButtonCustom from '../atoms/ButtonCustom';
 import { SelectList } from 'react-native-dropdown-select-list';
 

@@ -6,7 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { useNavigation } from '@react-navigation/native';
 import FormListItem from '../components/molecules/FormListItem';
-import { addForm, deleteForm, setForms } from '../redux/formSlice'; // Ajusta la importación
+import { addForm, deleteForm, setForms } from '../redux/formSlice';
 import { v4 as uuidv4 } from 'uuid';
 import ButtonCustom from '../components/atoms/ButtonCustom';
 import { FormStorage } from '../data/FormStorage';
