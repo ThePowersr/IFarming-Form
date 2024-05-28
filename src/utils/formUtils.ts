@@ -8,7 +8,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { FormStorage } from '../data/FormStorage';
 import { KeyboardTypeOptions } from 'react-native';
 import { RootStackParamList } from '../navigation/AppNavigator';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface FieldProps {
   id: string;

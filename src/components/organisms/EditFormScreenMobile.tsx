@@ -24,7 +24,7 @@ const EditFormScreenMobil = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <SafeAreaView style={{ flex: 1, top }}>
+        <SafeAreaView style={{ flex: 1, paddingTop: top }}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <View style={styles.containerMobil}>
               <FormNameInput value={name} onChange={setName} />

@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { KeyboardTypeOptions } from 'react-native';
-import { v4 as uuidv4 } from 'uuid';
 
 interface Field {
   id: string;

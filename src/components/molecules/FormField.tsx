@@ -37,7 +37,7 @@ const keyboardTypeOptions: { key: string, value: KeyboardTypeOptions }[] = [
 const FormField: React.FC<FormFieldProps> = ({ field, onLabelChange, onPlaceholderChange, onTypeChange, onRemove }) => {
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={styles.fieldContainer} contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.fieldContainer}>
         <TextInput
           style={styles.input}
           placeholder="Field Label"
@@ -57,7 +57,7 @@ const FormField: React.FC<FormFieldProps> = ({ field, onLabelChange, onPlacehold
           placeholder='Tipo de Input'
         />
         <ButtonCustom text="Eliminar" action={onRemove} containerStyle={{ backgroundColor: 'red' }} />
-      </ScrollView>
+      </View>
     </View>
   );
 };
