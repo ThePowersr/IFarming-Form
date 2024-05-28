@@ -1,6 +1,8 @@
 import { AppRegistry, Platform } from 'react-native';
 import App from './App';
-import { name as appName } from './app.json';
+import appJson from './app.json';
+
+const appName = appJson.expo.name;
 
 if (Platform.OS === 'web') {
   const rootTag = document.getElementById('root');
@@ -9,3 +11,4 @@ if (Platform.OS === 'web') {
 } else {
   AppRegistry.registerComponent(appName, () => App);
 }
+
