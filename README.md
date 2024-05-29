@@ -7,7 +7,8 @@ El proyecto cuenta con sus versiones para movil y Web, en web el proyecto cuenta
 
 1. [Instalación](#instalación)
 2. [Uso](#uso)
-3. [Ejemplos](#ejemplos)
+3. [Ejemplos Móvil](#ejemplos-móvil)
+4. [Ejemplos Web](#ejemplos-web)
 
 ## Instalación
 
