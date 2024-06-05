@@ -1,49 +1,20 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Image, StyleSheet, Animated, Easing } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
+import React, { useEffect } from 'react';
+import { View, Image, StyleSheet, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
-
-SplashScreen.preventAutoHideAsync();
+import useAnimation from '../hooks/useAnimation';
+import SplashScreenHandler from '../utils/SplashScreenHandler';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SplashScreen'>;
 
 export default function AnimatedSplashScreen() {
-  const opacity = useRef(new Animated.Value(1)).current;
+  const { opacity } = useAnimation();
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
   useEffect(() => {
-    const animate = () => {
-      Animated.sequence([
-        Animated.timing(opacity, {
-          toValue: 0.3,
-          duration: 1000,
-          easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 1,
-          duration: 1000,
-          easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
-        }),
-      ]).start(() => animate());
-    };
-
-    animate();
-  }, [opacity]);
-
-  const hideSplashScreen = async () => {
-    await SplashScreen.hideAsync();
-    setTimeout(() => {
-      navigation.replace('Home')
-    }, 3000)
-  };
-
-  useEffect(() => {
-    hideSplashScreen();
-  }, []);
+    SplashScreenHandler.hideSplashScreen(navigation);
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

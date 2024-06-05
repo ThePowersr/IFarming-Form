@@ -1,59 +1,19 @@
-import { useEffect, useState } from 'react';
-import { View, FlatList, Text, SafeAreaView, ScrollView, Platform, ActivityIndicator, StyleSheet } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import { View, FlatList, Text, SafeAreaView, Platform, ActivityIndicator, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { useNavigation } from '@react-navigation/native';
 import FormListItem from '../components/molecules/FormListItem';
-import { addForm, deleteForm, setForms } from '../redux/formSlice';
-import { v4 as uuidv4 } from 'uuid';
 import ButtonCustom from '../components/atoms/ButtonCustom';
-import { FormStorage } from '../data/FormStorage';
+import { useForms } from '../hooks/useForms';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const formStorage = new FormStorage();
-  const forms = useSelector((state: RootState) => state.forms.forms);
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadForms = async () => {
-      const storedForms = await formStorage.getForms();
-      dispatch(setForms(storedForms));
-      setLoading(false);
-    };
-
-    loadForms();
-  }, [dispatch]);
-
-  const handleCreateForm = async () => {
-    const newForm = {
-      id: uuidv4(),
-      name: `Form ${forms.length + 1}`,
-      fields: []
-    };
-    await formStorage.addForm(newForm)
-    dispatch(addForm({ name: newForm.name, id: newForm.id })); // Despacha solo el nombre del formulario
-  };
-
-  const handleDeleteForm = async (id: string) => {
-    await formStorage.removeForm(id)
-      .then((items) => {
-        console.log('hecho');
-        console.log(items)
-      })
-      .catch((error) => console.log(error));
-    console.log(id);
-    dispatch(deleteForm(id));
-  };
+  const { forms, loading, handleCreateForm, handleDeleteForm } = useForms();
 
   if (loading) {
     return <ActivityIndicator />;
-
   }
 
   return (

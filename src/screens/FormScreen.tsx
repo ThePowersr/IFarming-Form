@@ -1,34 +1,18 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux';
-import { RootStackParamList } from '../navigation/AppNavigator';
-import { RootState } from '../redux/store';
-import { selectFormById } from '../redux/selectors';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ButtonCustom from '../components/atoms/ButtonCustom';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useEffect } from 'react';
-import { FormStorage } from '../data/FormStorage';
-import { setForms } from '../redux/formSlice';
-
-type FormScreenRouteProp = RouteProp<RootStackParamList, 'Form'>;
+import { useForm } from '../hooks/useForm';
 
 const FormScreen = () => {
-  const route = useRoute<FormScreenRouteProp>();
-  const { formId } = route.params;
-  const form = useSelector((state: RootState) => selectFormById(state, formId!));
+  const { form } = useForm();
   const { top } = useSafeAreaInsets();
-  const formStorage = new FormStorage();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadForms = async () => {
-      const storedForms = await formStorage.getForms();
-      dispatch(setForms(storedForms));
-    };
-
-    loadForms();
-  }, [dispatch]);
+  const handleSubmit = () => {
+    Alert.alert('¡Éxito!', 'El formulario se ha enviado de manera correcta.', [
+      { text: 'Aceptar' },
+    ]);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -48,11 +32,7 @@ const FormScreen = () => {
                   </View>
                 ))
               }
-              <ButtonCustom action={() => Alert.alert('Exito!!!', 'El formulario se ha enviado de manera correcta.', [
-                {
-                  text: 'Aceptar',
-                }
-              ])} text='Enviar' containerStyle={{ marginTop: 30 }} />
+              <ButtonCustom action={handleSubmit} text='Enviar' containerStyle={{ marginTop: 30 }} />
             </View>
           </View>
         </SafeAreaView>

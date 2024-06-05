@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import EditFormScreen from '../screens/EditFormScreen';
 import FormScreen from '../screens/FormScreen';
-import { Platform, Text, View } from 'react-native';
+import { Platform } from 'react-native';
 import AnimatedSplashScreen from '../screens/SplashSCreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
@@ -18,9 +18,8 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-// Configuración de los enlaces con la propiedad prefixes
 const linking = {
-  prefixes: ['http://localhost:3000', 'https://myapp.com'],
+  prefixes: ['http://localhost:3000'],
   config: {
     screens: {
       Home: '',

@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const KEY_FORMS = 'forms';
 
-interface FormData {
+export interface FormData {
   id: string;
   name: string;
   fields: any[];

@@ -3,10 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="shortcut icon" href="../assets/favicon.png">
+  <link rel="shortcut icon" href="../assets/ifarmingLogo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
-  <link rel="manifest" href="./manifest.json">
+  <meta name="description" content="hola">
+  <meta name="keywords" content="hola">
+  <link rel="manifest" href="manifest.json">
   <title>IFarming</title>
   <style>
     html,
@@ -15,67 +17,11 @@
       font-size: 62.5%;
     }
 
-    /* These styles make the root element full-height */
     #root {
       display: flex;
       height: 100%;
     }
   </style>
-  <script>
-    function updateHead(params) {
-      const { title, description, keywords, favicon } = params;
-      if (title) {
-        document.title = title;
-      }
-      if (description) {
-        let metaDescription = document.querySelector('meta[name="description"]');
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta');
-          metaDescription.name = 'description';
-          document.head.appendChild(metaDescription);
-        }
-        metaDescription.content = description;
-      }
-      if (keywords) {
-        let metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (!metaKeywords) {
-          metaKeywords = document.createElement('meta');
-          metaKeywords.name = 'keywords';
-          document.head.appendChild(metaKeywords);
-        }
-        metaKeywords.content = keywords.join(', ');
-      }
-      if (favicon) {
-        let link = document.querySelector("link[rel~='icon']");
-        if (!link) {
-          link = document.createElement('link');
-          link.rel = 'icon';
-          document.head.appendChild(link);
-        }
-        link.href = favicon;
-      }
-    }
-
-    // Example usage based on URL
-    document.addEventListener("DOMContentLoaded", () => {
-      const url = window.location.pathname;
-      if (url.includes("home")) {
-        updateHead({
-          title: 'Home - IFarming',
-          description: 'Bienvenido a la página principal de IFarming.',
-          keywords: ['IFarming', 'Home'],
-          favicon: 'favicon-home.png'
-        });
-      } else if (url.includes("another")) {
-        updateHead({
-          title: 'Another Page - IFarming',
-          description: 'Esta es otra página de IFarming.',
-          keywords: ['IFarming', 'Another Page'],
-          favicon: 'favicon-another.png'
-        });
-      }
-    });
-  </script>
 </head>
 
 <body>

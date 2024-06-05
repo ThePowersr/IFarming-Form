@@ -1,15 +1,22 @@
 {
-  "short_name": "IFarming-Form",
-  "name": "IFarming-app-form",
+  "short_name": "IFarming",
+  "name": "IFarming-Form",
   "icons": [
     {
-      "src": "../assets/favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "../assets/ifarmingLogo.png",
+      "type": "image/png",
+      "sizes": "168x111"
+    },
+    {
+      "src": "../assets/ifarmingLogo.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/?source=pwa",
+  "background_color": "#3367D6",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "scope": "/",
+  "theme_color": "#3367D6",
+  "description": "Aplications for forms"
 }

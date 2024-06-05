@@ -12,7 +12,7 @@
       "web"
     ],
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ifarmingLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
